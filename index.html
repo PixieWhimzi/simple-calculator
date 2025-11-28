@@ -175,7 +175,7 @@
             <button onclick="inputChar('(')">(</button>
             <button onclick="inputChar(')')">)</button>
             <button onclick="performOperation('%')">%</button>
-            <button onclick="clear()">AC</button>
+            <button onclick="clearAll()">AC</button>
 
             <button onclick="inputDigit('7')">7</button>
             <button onclick="inputDigit('8')">8</button>
@@ -240,7 +240,7 @@
             updateDisplay();
         }
 
-        function clear() {
+        function clearAll() {
             display = '0';
             previousValue = null;
             operation = null;
@@ -353,7 +353,7 @@
             }
             // Clear (Escape or 'c' or 'C')
             else if (key === 'Escape' || key === 'c' || key === 'C') {
-                clear();
+                clearAll();
             }
             // Parentheses
             else if (key === '(') {
