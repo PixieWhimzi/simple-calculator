@@ -319,6 +319,50 @@
 
         // Initialize buttons with light theme
         document.querySelectorAll('button').forEach(btn => btn.className = 'light');
+
+        // Keyboard support
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            
+            // Numbers
+            if (key >= '0' && key <= '9') {
+                inputDigit(key);
+            }
+            // Operators
+            else if (key === '+' || key === '-' || key === '*' || key === '/' || key === '%') {
+                performOperation(key);
+            }
+            // Decimal point
+            else if (key === '.' || key === ',') {
+                inputDot();
+            }
+            // Enter or Equals
+            else if (key === 'Enter' || key === '=') {
+                event.preventDefault();
+                performOperation('=');
+            }
+            // Backspace
+            else if (key === 'Backspace') {
+                event.preventDefault();
+                if (display.length > 1) {
+                    display = display.slice(0, -1);
+                } else {
+                    display = '0';
+                }
+                updateDisplay();
+            }
+            // Clear (Escape or 'c' or 'C')
+            else if (key === 'Escape' || key === 'c' || key === 'C') {
+                clear();
+            }
+            // Parentheses
+            else if (key === '(') {
+                inputChar('(');
+            }
+            else if (key === ')') {
+                inputChar(')');
+            }
+        });
     </script>
 </body>
 </html>
